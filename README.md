@@ -22,7 +22,7 @@ I downloaded the data on 2014-10-11 22:04. After unzipping I got a (sub)director
 Great, there is a README.txt file. It elaborates a little further on what this is all about then the description menioned above. It also lists the files with a very brief explanation. There are a few files at the top level and subdirectories train and test with similar structure.
 
 ## activity_labels.txt
-Seems to map activity numbers to activity "verbs". This could be processed as a dataframe. It is space separated and has no heading --> col.name = c("ActivityId", "Activity").
+Seems to map activity numbers to activity "verbs". This could be processed as a dataframe. It is space separated and has no heading --> col.name = c("ActivityId", "ActivityName").
 
 ## features_info.txt
 Describes how the raw measurements where processed to the machine learning features, sort of summary of the next file.
@@ -49,12 +49,13 @@ Contains raw data from which X_... was derived. The structure of the files looks
 This directory has the same structure as the train directory. But the numbers are different. Based on the SubjectId's test and train are indeed disjunct.
 
 ## This is not a tidy data set
-This data set is well structured, clean but in my opinion it is questionable if it is tidy. The X_..., y_... and subject... files contain data that clearly belongs together. The relation is not facilitated by a key per row in each of the files but solely on the very row the data occurs. This is not an explicit but in implicit error prone key. Each row in the separate files together do form an instance of een observational unit. In my opinion this violates the "Each type of observational unit forms a table" requirement for a tidy data set.
+This data set is well structured, clean but in my opinion it is questionable if it is tidy. The X_..., y_... and subject... files contain data that clearly belongs together. The relation between the files is not facilitated by keys in each of the files but solely on the very row the data occurs. This is not an explicit but implicit rather error prone key. Each row in the separate files together do form an instance of een observational unit. In my opinion this (separation over several files without explicit keys) violates the "Each type of observational unit forms a table" requirement for a tidy data set.
 
 # Processing the input
 We are given the following assingment:
 
-You should create one R script called run_analysis.R that does the following. 
+You should create one R script called run_analysis.R that does the following.
+ 
 1. Merges the training and the test sets to create one data set.
 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
 3. Uses descriptive activity names to name the activities in the data set
@@ -67,7 +68,7 @@ The script loops over the relevant files and within that loop, loops over the di
 The new files are left in the current directory. They are not removed by the script.
 
 ##  Extracts only ...
-This means we should only pick the relevant columns from the X_... file. Since this specification in combination with features.txt is some what ambibuous, I chose to include every column of the X_... file of which the corresponding line in features.txt looks like mean or std.
+This means we should only pick the relevant columns from the X_... file. Since this specification in combination with features.txt is somewhat ambibuous, I chose to include every column of the X_... file of which the corresponding line in features.txt looks like mean or std.
 
 The script first builds a data frame from the features.text file. From the resulting data frame it builds a selector to be used while reading the X_... file.
 
