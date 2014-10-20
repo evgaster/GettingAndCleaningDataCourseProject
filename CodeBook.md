@@ -4,7 +4,7 @@ This data set consists of the columns:
 
 1. Activity
 2. Subject
-3. 86 columns named like meanOf...
+3. 86 columns named like meanOf. ...
 
 The values of Activity come from the domein: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING,
 STANDING and LAYING.
@@ -17,4 +17,4 @@ The data set is a result of an experiment carried out with a group of 30 volunte
 
 The experiment and measurement processing is further described in the various files in the "Human Activity Recognition Using Smartphones Dataset" that was handed over as input. Those details provide interesting backgroud information but are not needed to understand this data set.
 
-For our purpose a subset of the features were selected. The subset consists of the features with Mean, mean, Std or std in their name. That gives us for each Activity for each Subject for each of those features several measurements. Per Activity, per Subject, per feature the measurements are averaged and represented in this data set as a meanOf. followed by the feature name.
+For our purpose a subset of the features was selected. The subset consists of the features with Mean, mean, Std or std in their name. That gives us for each Activity for each Subject for each of those features several measurements. Per Activity, per Subject, per feature the measurements are averaged and represented in this data set as a meanOf. followed by the feature name (beware that in the feature names the characters "()-" are replace by "...").
